@@ -9,10 +9,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 @pytest.mark.usefixtures("setup")
 class BaseClass():
 
-    def synchronization(self):
-        wait = WebDriverWait(self.driver, 30)
-        return wait
-
     def getLogger(self):
 
         loggerName = inspect.stack()[1][3]

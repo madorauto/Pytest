@@ -16,17 +16,6 @@ class Test_001_Login(BaseClass):
         self.lp.checkLoginHeaderTitle()
         log.info("***** Login page test is passed *****")
 
-    def test_valid_login(self):
-        log = self.getLogger()
-        log.info("***** Verifying Login Test *****")
-        self.lp=LoginPageActions(self.driver)
-        self.dpa=DashboardPageAssertions(self.driver)
-        self.lp.inputUsername(LoginPageData.username)
-        self.lp.inputPassword(LoginPageData.password)
-        self.lp.clickLogin()
-        self.dpa.checkLogoutbutton()
-        log.info("***** Login test is passed *****")
-
     def test_invalid_login(self):
         log = self.getLogger()
         log.info("***** Verifying Invalid Login Test *****")
@@ -54,5 +43,17 @@ class Test_001_Login(BaseClass):
         self.Validation.checkErrorMessage(LoginPageData.passworderrormessage)
         self.Action.inputUsername(LoginPageData.blankusername)
         self.Action.inputPassword(LoginPageData.password)
+        self.Action.clickLogin()
         self.Validation.checkEmailErrorMessage(LoginPageData.emailerrormessage)
         log.info("***** Invalid Login test is passed *****")
+
+    def test_valid_login(self):
+        log = self.getLogger()
+        log.info("***** Verifying Login Test *****")
+        self.lp=LoginPageActions(self.driver)
+        self.dpa=DashboardPageAssertions(self.driver)
+        self.lp.inputUsername(LoginPageData.username)
+        self.lp.inputPassword(LoginPageData.password)
+        self.lp.clickLogin()
+        self.dpa.checkLogoutbutton()
+        log.info("***** Login test is passed *****")
